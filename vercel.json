@@ -1,17 +1,21 @@
 {
   "functions": {
-    "api/twikoo.js": {
+    "src/vercel/index.js": {
       "runtime": "nodejs18.x"
     }
   },
   "rewrites": [
+    {
+      "source": "/.netlify/functions/(.*)",
+      "destination": "/api/$1"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/dist/index.html"
     }
   ]
 }
