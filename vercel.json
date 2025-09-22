@@ -1,7 +1,12 @@
 {
+  "functions": {
+    "api/*.js": {
+      "runtime": "@vercel/node@20"
+    }
+  },
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -16,9 +21,22 @@
           "value": "Content-Type, Authorization, X-Requested-With"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/index"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
